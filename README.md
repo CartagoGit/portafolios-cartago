@@ -8,4 +8,4 @@ La idea de este portafolios es crear una especie de currículum extendido donde 
 
 ## Github del proyecto
 
-<>
+<https://github.com/CartagoGit/portafolios-cartago>
