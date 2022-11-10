@@ -43,3 +43,8 @@ Thumbs.db
 
 # deprecated
 /.deprecated
+
+#enviornment
+/src/core/environments/environment.prod.ts
+/src/core/environments/environment.ts
+
