@@ -1,0 +1,20 @@
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  border-radius: 100%;
+  border: 1px solid $blue-primary;
+  width: 25px;
+  height: 25px;
+  font-size: 15px;
+  background: $purple;
+  color: $light;
+  transition: scale 500ms ease, border 500ms ease;
+}
+*:hover > .badge {
+  scale: 1.1;
+  border: 1px solid $lightblue;
+}

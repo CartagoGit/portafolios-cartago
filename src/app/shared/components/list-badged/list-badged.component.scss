@@ -1,0 +1,42 @@
+@use "/src/assets/styles/vars" as *;
+
+:host {
+  overflow: hidden;
+  background: $background-primary-inverse;
+  text-align: center;
+  padding: 0;
+  .projects {
+    height: 100%;
+    overflow: auto;
+    padding: 0 5px;
+    .list-projects {
+      flex-direction: column;
+      display: flex;
+      padding: 5px 0px;
+      .project {
+        background: $blackgrey;
+        color: $light;
+        transition: opacity 500ms ease;
+        display: flex;
+        justify-content: center;
+        min-width: 400px;
+        margin: auto;
+        margin-top: 3px;
+        margin-bottom: 4px;
+        flex-wrap: wrap;
+        padding: 8px;
+        font-size: 18px;
+        position: relative;
+        &:hover {
+          opacity: 0.9;
+        }
+        > * {
+          &:last-child {
+            width: 100%;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}

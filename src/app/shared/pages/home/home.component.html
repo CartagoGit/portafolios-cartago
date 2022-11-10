@@ -1,0 +1,71 @@
+<div class="home-container">
+  <!--? INFO DEL CURSO A REALIZAR -->
+  <a
+    class="curso-home card card-hover"
+    href="https://www.udemy.com/course/redux-ngrx-angular/?couponCode=OCT-2022-B"
+    target="_blank"
+  >
+    <h2>Curso de Redux en Angular - NGRX</h2>
+    <h3>por Fernando Herrera de Udemy</h3>
+
+    <div class="contenido-curso card card-child-hover">
+      <img
+        class="img-ngrx"
+        src="../../../../assets/images/logos/redux-ngrx.jpg"
+        alt="Imagen NGRX y Redux"
+      />
+      <h3>REDUX en Angular con NGRX: Desde las bases hasta la práctica</h3>
+      <p>
+        Al finalizar el curso podrás implementar exitosamente el patrón redux en
+        tus proyectos de Angular y controlar como fluye la información en tu
+        aplicacion
+      </p>
+    </div>
+  </a>
+
+  <!--? TARJETA CON LOS PROYECTOS DEL CURSO -->
+  <div class="projects-home card">
+    <h4>Página para recopilar los proyecto desarrollados durante el curso</h4>
+    <h2>Lista de proyectos del curso:</h2>
+    <app-list-badged class="card"></app-list-badged>
+  </div>
+
+  <!--? ENLACES A PUNTOS DE INTERES SOBRE MÍ -->
+  <div class="contacto-home card">
+    <h2>
+      También puedes ver más información sobre mí, mis proyectos y mis
+      certificados:
+    </h2>
+    <div class="links">
+      <!-- TODO mostrar mensaje de que el email se ha copiado al portapapeles -->
+      <a class="card card-hover email" (click)="copyToClipboard(links.email)"
+        >Email</a
+      >
+
+      <a class="card card-hover github" [href]="links.github" target="_blank"
+        >Github</a
+      >
+
+      <a
+        class="card card-hover portafolios"
+        [href]="links.portafolios"
+        target="_blank"
+        >Portafolios</a
+      >
+
+      <a
+        class="card card-hover linkedin"
+        [href]="links.linkedin"
+        target="_blank"
+        >LinkedIn
+      </a>
+
+      <a
+        class="card card-hover certificates"
+        [href]="links.certificatesGithub"
+        target="_blank"
+        >Certificados</a
+      >
+    </div>
+  </div>
+</div>

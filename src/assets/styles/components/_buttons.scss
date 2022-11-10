@@ -1,0 +1,20 @@
+//? Eliminamos cualquier estilo impuesto para los botones
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+// ? Iconos cuadrados
+.button-icon {
+  border: $purpleblue 3px solid;
+  padding: 13px 15px;
+  border-radius: 10px;
+  background: linear-gradient(215deg, $purplegrey 0%, $blue-primary 100%);
+  transition: border 300ms ease, border-radius 300ms ease;
+
+  &:hover {
+    border: $lightblue 3px solid;
+    scale: 1.1;
+    border-radius: 35%;
+  }
+}

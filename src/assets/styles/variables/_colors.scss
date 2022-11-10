@@ -1,0 +1,51 @@
+$blackgrey: #202020;
+$darkgrey: #40453f;
+$lightgrey: #bebdbc;
+$light: #f7f7f7;
+$purple: #653cf0;
+$purplegrey: #513192;
+$purpleblue: #406bf7;
+$lightblue: #40f7dd;
+$lightgreen: #3eed7e;
+$blue-primary: #45aee0;
+
+$background-gradient-grey: linear-gradient(
+  215deg,
+  $blackgrey 0%,
+  $darkgrey 100%
+);
+$background-gradient-grey-invert: linear-gradient(
+  215deg,
+  $darkgrey 0%,
+  $blackgrey 100%
+);
+$background-gradient-dark: linear-gradient(
+  215deg,
+  black 100%,
+  $blackgrey 1000%
+);
+
+$background-primary: linear-gradient(
+  215deg,
+  $purplegrey 0%,
+  $blue-primary 100%
+);
+
+$background-primary-inverse: linear-gradient(
+  215deg,
+  $blue-primary 0%,
+  $purplegrey 100%
+);
+
+$background-grey-light: linear-gradient(215deg, $lightgrey 0%, $light 100%);
+
+$shadow-primary: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+  rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+$shadow-secondary: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+  rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+$linear-opacity-background: linear-gradient(
+  rgba(black, 0.95),
+  rgba($blackgrey, 0.65)
+);

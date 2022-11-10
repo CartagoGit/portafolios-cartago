@@ -1,0 +1,28 @@
+<section class="sidebar sidebar-top">
+  <div><h2>Proyectos del curso</h2></div>
+  <div class="icons-section">
+    <button
+      type="button"
+      class="pointer expand-button button-icon"
+      (click)="expandSidebar()"
+    >
+      <i
+        class="fa-solid fa-arrow-right icon"
+        [ngClass]="isExpanded ? 'expanded-icon' : ''"
+      ></i>
+    </button>
+  </div>
+</section>
+<section class="sidebar sidebar-bot">
+  <div class="routes-section">
+    <div><app-list-badged></app-list-badged></div>
+  </div>
+  <div class="icons-section">
+    <div class="list-icons">
+      <div *ngFor="let numProject of projects; let i = index" class="area-icon">
+        <span class="icon">{{ i + 1 }}</span>
+        <!-- [ngClass]="isExpanded ? 'expanded-icon' : ''" -->
+      </div>
+    </div>
+  </div>
+</section>

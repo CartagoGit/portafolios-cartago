@@ -1,0 +1,12 @@
+<div class="projects">
+  <div class="list-projects">
+    <div
+      *ngFor="let project of projects; let i = index"
+      class="project card card-hover"
+    >
+      <span class="badge">{{ i + 1 }}</span>
+      <span>{{ project.title }}</span>
+      <p>{{ project.description }}</p>
+    </div>
+  </div>
+</div>

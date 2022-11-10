@@ -1,0 +1,15 @@
+::-webkit-scrollbar {
+  width: 12px;
+  box-shadow: $shadow-primary;
+  &-thumb {
+    background: $blackgrey;
+    border-radius: 4px;
+    box-shadow: $shadow-primary;
+  }
+  &-track {
+    border-radius: 4px;
+    background: $lightgrey;
+    box-shadow: $shadow-primary;
+  }
+}
+

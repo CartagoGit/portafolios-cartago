@@ -1,0 +1,29 @@
+//? Imports por partes
+@import "./external";
+@import "./vars";
+@import "./components";
+
+//? Estilos generales de la pagina
+body {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Lora", serif;
+
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
