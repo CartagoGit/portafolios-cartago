@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urlApi: 'https://portafolios-cartago-api.onrender.com/api'
+  // urlApi: 'https://x0p2m3.deta.dev'
+  // urlApi: 'https://portafolios-cartago.cyclic.app'
+
 };
 
 /*

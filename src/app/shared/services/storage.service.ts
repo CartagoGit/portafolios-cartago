@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { IAuthor } from '../interfaces/author.interface';
 import { ICourse } from '../interfaces/course.interface';
 import { IExternalLinks } from '../interfaces/external-links';
 import { IProject } from '../interfaces/projects.interface';
+import { TNameModels } from '../interfaces/storage.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StorageService {
+
+  //SECTION - PROYECTOS
   /**
    * ? Lista de Proyectos
    */
   private _projects: IProject[] = [];
   set projects(value: IProject[]) {
     this._projects = [...value];
-    this._subjectProjects$.next([...this.projects]);
+    this._subjectProjects$.next([...this._projects]);
   }
   get projects(): IProject[] {
     return [...this._projects];
@@ -31,13 +35,15 @@ export class StorageService {
   public obsProjects: Observable<IProject[]> =
     this._subjectProjects$.asObservable();
 
+
+    //SECTION - CURSOS
   /**
    * ? Lista de Cursos
    */
   private _courses: ICourse[] = [];
   set courses(value: ICourse[]) {
     this._courses = [...value];
-    this._subjectCourses$.next([...this.courses]);
+    this._subjectCourses$.next([...this._courses]);
   }
   get courses(): ICourse[] {
     return [...this._courses];
@@ -54,6 +60,29 @@ export class StorageService {
   public obsCourses: Observable<ICourse[]> =
     this._subjectCourses$.asObservable();
 
+    //SECTION - AUTORES
+  /**
+   * ? Lista de Autores
+   */
+  private _authors: IAuthor[] = [];
+  set authors(value: IAuthor[]) {
+    this._authors = [...value];
+    this._subjectAuthors$.next([...this._authors]);
+  }
+  get authors(): IAuthor[] {
+    return [...this._authors];
+  }
+
+  /**
+   * ? Subject de lista de cursos
+   */
+  private _subjectAuthors$: Subject<IAuthor[]> = new Subject<IAuthor[]>();
+
+  /**
+   * ? Observable de la lista de cursos
+   */
+  public obsAuthors: Observable<IAuthor[]> =
+    this._subjectAuthors$.asObservable();
   /**
    * ? Información de rutas externas a la aplicación
    */
@@ -68,7 +97,7 @@ export class StorageService {
   /**
    * ? Tipo a mostrar en el panel derecho
    */
-  public tipoRightPanel: Readonly<'courses' | 'projects'> = 'courses';
+  public tipoRightPanel: Readonly<TNameModels> = 'courses';
 
   //$ Constructor
   constructor() {
