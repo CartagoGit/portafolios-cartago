@@ -8,7 +8,7 @@ import { environment } from '../../../core/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class BasicCrudService {
+export class CrudService {
   private _apiUrl = environment.urlApi;
 
   private _endpoints = {

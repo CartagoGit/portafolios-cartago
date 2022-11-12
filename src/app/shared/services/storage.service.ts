@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { IAuthor } from '../interfaces/author.interface';
 import { ICourse } from '../interfaces/course.interface';
-import { IExternalLinks } from '../interfaces/external-links';
+import { IExternalLinks, IWebOwner } from '../interfaces/constants';
 import { IProject } from '../interfaces/projects.interface';
 import { TNameModels } from '../interfaces/storage.interface';
 
@@ -10,8 +10,15 @@ import { TNameModels } from '../interfaces/storage.interface';
   providedIn: 'root',
 })
 export class StorageService {
+  //GROUP - VARIABLES
+  //#region
+
+  //GROUP-SECTION - Modelo de datos
+  // #region
 
   //SECTION - PROYECTOS
+  // #region
+
   /**
    * ? Lista de Proyectos
    */
@@ -35,8 +42,11 @@ export class StorageService {
   public obsProjects: Observable<IProject[]> =
     this._subjectProjects$.asObservable();
 
+  //!SECTION
+  // #endregion PROYECTOS
 
-    //SECTION - CURSOS
+  //SECTION - CURSOS
+  // #region
   /**
    * ? Lista de Cursos
    */
@@ -60,7 +70,12 @@ export class StorageService {
   public obsCourses: Observable<ICourse[]> =
     this._subjectCourses$.asObservable();
 
-    //SECTION - AUTORES
+  //!SECTION
+  // #endregion CURSOS
+
+  //SECTION - AUTORES
+  // #region
+
   /**
    * ? Lista de Autores
    */
@@ -83,6 +98,31 @@ export class StorageService {
    */
   public obsAuthors: Observable<IAuthor[]> =
     this._subjectAuthors$.asObservable();
+
+  //!SECTION
+  // #endregion - SECTION - AUTORES
+
+  //!GROUP-SECTION
+  // #endregion - SECTION - MODELOS DE DATOS
+
+  //GROUP-SECTION - Información fija
+  // #region
+  /**
+   * ? Información del dueño o creador de la web
+   */
+  public webOwner: Readonly<IWebOwner> = {
+    name: 'Mario',
+    subname: 'Cabrero Volarich',
+    nick: 'Cartago',
+    subnick: 'Nova',
+    completeName() {
+      return this.name + ' ' + this.subname;
+    },
+    completeNick() {
+      return this.nick + ' ' + this.subnick;
+    },
+  };
+
   /**
    * ? Información de rutas externas a la aplicación
    */
@@ -90,8 +130,41 @@ export class StorageService {
     email: 'cv2mario@gmail.com',
     github: 'https://github.com/CartagoGit',
     portafolios: '#',
-    linkedin: 'https://www.linkedin.com/in/mario-cabrero-volarich/',
+    linkedin: 'https://www.linkedin.com/in/mario-cabrero-volarich',
     certificatesGithub: 'https://github.com/CartagoGit/Certificados',
+  };
+
+  /**
+   * ? Información a mostrar en consola nada mas iniciar la aplicación
+   */
+  public initConsoleMessage = {
+    nameGroup: 'Info - Web owner',
+    titleFontColor: '#bada55',
+    titleBackgroundColor: '',
+    dataFontColor: '',
+    dataBackgroundColor: '',
+    dataToShow: [
+      {
+        title: 'Web owner',
+        data: this.webOwner.completeName(),
+      },
+      {
+        title: 'Nickname',
+        data: this.webOwner.completeNick(),
+      },
+      {
+        title: 'Email',
+        data: this.links.email,
+      },
+      {
+        title: 'Github',
+        data: this.links.github,
+      },
+      {
+        title: 'Linkedin',
+        data: this.links.linkedin,
+      },
+    ],
   };
 
   /**
@@ -99,8 +172,20 @@ export class StorageService {
    */
   public tipoRightPanel: Readonly<TNameModels> = 'courses';
 
-  //$ Constructor
+  //!GROUP-SECTION
+  //#endregion -INFORMACION FIJA
+
+  //!GROUP
+  //#endregion - Variables
+
+  //ANCHOR Constructor
   constructor() {
     // this.projects = this._initProjects;
   }
+
+  //GROUP - Metodos
+  //#region
+
+  //!GROUP
+  //#endregion Metodos
 }
