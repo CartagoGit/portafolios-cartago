@@ -10,7 +10,7 @@ import { TNameModels } from '../interfaces/storage.interface';
   providedIn: 'root',
 })
 export class StorageService {
-  //GROUP - VARIABLES
+  //GROUP - Variables
   //#region
 
   //GROUP-SECTION - Modelo de datos
@@ -135,17 +135,46 @@ export class StorageService {
   };
 
   /**
+   * ? Logo en mensaje de bienvenida
+   */
+  private _logoAscii: Readonly<string> = `
+    ████████                       █████
+  ███░░░░░███                     ░░███
+ ███     ░░░   ██████   ████████  ███████    ██████    ███████  ██████
+░███          ░░░░░███ ░░███░░███░░░███░    ░░░░░███  ███░░███ ███░░███
+░███           ███████  ░███ ░░░   ░███      ███████ ░███ ░███░███ ░███
+░░███     ███ ███░░███  ░███       ░███ ███ ███░░███ ░███ ░███░███ ░███
+ ░░█████████ ░░████████ █████      ░░█████ ░░████████░░███████░░██████
+  ░░░░░░░░░   ░░░░░░░░ ░░░░░        ░░░░░   ░░░░░░░░  ░░░░░███ ░░░░░░
+                                                      ███ ░███
+                                                     ░░██████
+                                                      ░░░░░░
+  `;
+
+  /**
+   * ? Source del logotipo
+   */
+  private _logoImg: Readonly<string> =
+    'assets/images/logos/Cartago_logo.png';
+
+  /**
    * ? Información a mostrar en consola nada mas iniciar la aplicación
    */
   public initConsoleMessage = {
-    nameGroup: 'Info - Web owner',
-    titleFontColor: '#bada55',
+    nameGroup: 'Information - Web owner',
+    groupFontColor: '#f5f5f5f5',
+    groupBackgroundColor: 'linear-gradient(215deg, #45aee0 0%, #513192 100%)',
+    groupAdditionalCss:
+      'border-radius: 5px; padding: 0px 5px; border: 2px solid #513192; font-size: 18px;',
+    titleFontColor: '#896afc',
     titleBackgroundColor: '',
-    dataFontColor: '',
+    titleAdditionalCss: 'font-size: 16px',
+    dataFontColor: '#45aee0',
     dataBackgroundColor: '',
+    dataAdditionalCss: 'font-size: 16px',
     dataToShow: [
       {
-        title: 'Web owner',
+        title: 'Name',
         data: this.webOwner.completeName(),
       },
       {
@@ -165,6 +194,7 @@ export class StorageService {
         data: this.links.linkedin,
       },
     ],
+    logoToShow : this._logoImg
   };
 
   /**
@@ -183,9 +213,9 @@ export class StorageService {
     // this.projects = this._initProjects;
   }
 
-  //GROUP - Metodos
+  //GROUP - Métodos
   //#region
 
   //!GROUP
-  //#endregion Metodos
+  //#endregion Métodos
 }

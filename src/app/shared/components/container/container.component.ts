@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { consoleImg } from '../../helpers/console-image.helper';
 import { IAuthor } from '../../interfaces/author.interface';
 import { CrudService } from '../../services/crud.service';
 import { StorageService } from '../../services/storage.service';
@@ -11,14 +12,15 @@ import { StorageService } from '../../services/storage.service';
 export class ContainerComponent implements OnInit {
   public title: string = 'Portafolios de Mario Cabrero Volarich - CartagoNova';
 
+  //ANCHOR - CONSTRUCTOR
   constructor(
     private _storageSvc: StorageService,
     private _crudSvc: CrudService
   ) {}
 
-  ngOnInit(): void {
-    this._showInitConsoleMessage();
+  ngOnInit(): void {}
 
+  ngAfterViewInit(): void {
     this._crudSvc.getAll('authors').subscribe({
       next: (resp: any) => {
         console.log(resp);
@@ -35,15 +37,54 @@ export class ContainerComponent implements OnInit {
         console.log('Se han recuperado los autores de la base de datos.');
       },
     });
+    this._showInitConsoleMessage();
   }
 
-  private _showInitConsoleMessage() {
-    console.group('%c Info - Web owner','color: #bada55');
-    console.log('Web owner: ' + this._storageSvc.webOwner.completeName());
-    console.log('Nickname: ' + this._storageSvc.webOwner.completeNick());
-    console.log('Email: ' + this._storageSvc.links.email);
-    console.log('Github: ' + this._storageSvc.links.github);
-    console.log('LinkedIn: ' + this._storageSvc.links.linkedin);
+  //GROUP - Metodos
+  //#region
+
+  /**
+   * ? Metodo para crear el mensaje inicial a mostrar en la consola
+   */
+  private _showInitConsoleMessage = async (size = 250) => {
+    const dataMsg = this._storageSvc.initConsoleMessage;
+
+    //* Creamos el grupo de datos de Información
+    console.group(
+      '%c' + dataMsg.nameGroup,
+      'color:' +
+        dataMsg.groupFontColor +
+        '; background: ' +
+        dataMsg.groupBackgroundColor +
+        '; ' +
+        dataMsg.groupAdditionalCss
+    );
+    //* Cargamos la imagen del logo  en la consola
+    await consoleImg.load(dataMsg.logoToShow, { size });
+    //* Cargamos la lista de datos iniciales
+    for (const item of dataMsg.dataToShow) {
+      const messageToShow = '%c' + item.title + ': ' + '%c' + item.data;
+      const titleCss =
+        'color: ' +
+        dataMsg.titleFontColor +
+        '; background: ' +
+        dataMsg.titleBackgroundColor +
+        '; ' +
+        dataMsg.titleAdditionalCss;
+
+      const dataCss =
+        'color: ' +
+        dataMsg.dataFontColor +
+        '; background: ' +
+        dataMsg.dataBackgroundColor +
+        '; ' +
+        dataMsg.dataAdditionalCss;
+
+      console.log(messageToShow, titleCss, dataCss);
+    }
     console.groupEnd();
-  }
+  };
+
+  //!GROUP - Metodos
+  //#endregion
 }

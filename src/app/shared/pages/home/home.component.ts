@@ -9,7 +9,7 @@ import { IExternalLinks } from '../../interfaces/constants';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  // ! Habrá que crear un componente exclusivo para mostrar la información del curso actual
+  // !! Habrá que crear un componente exclusivo para mostrar la información del curso actual
   public links: IExternalLinks;
 
   constructor(
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  //! notificar al usuario que se ha copiado el email al portapapeles
+  //!! notificar al usuario que se ha copiado el email al portapapeles
   public copyToClipboard(text: string) {
     navigator.clipboard.writeText(text);
   }
