@@ -9,6 +9,7 @@ import {
 
 import { environment } from '../../../core/environments/environment';
 import { IResponse } from '../interfaces/storage.interface';
+import { getSingular } from '../helpers/modify-strings.helper';
 
 @Injectable({
   providedIn: 'root',
@@ -65,8 +66,7 @@ export class CrudService {
       this._createUrl(typeModel, this._endpoints.getById) + '/' + id;
     return this._http.get<IResponse>(fullUrl).pipe(
       map((resp) => {
-        if (resp.ok)
-          return resp[typeModel.slice(0, typeModel.length - 1)] as TModel;
+        if (resp.ok) return resp[getSingular(typeModel)] as TModel;
         else throw throwError(() => new Error(resp.msg));
       })
     );

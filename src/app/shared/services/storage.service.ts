@@ -4,8 +4,16 @@ import { IAuthor } from '../interfaces/author.interface';
 import { ICourse } from '../interfaces/course.interface';
 import { IExternalLinks, IWebOwner } from '../interfaces/constants';
 import { IProject } from '../interfaces/projects.interface';
-import { TArrayModel, TNameModels } from '../interfaces/storage.interface';
+import {
+  TArrayModel,
+  TNameModels,
+  TLastNameModels,
+} from '../interfaces/storage.interface';
 import { CrudService } from './crud.service';
+import {
+  getSingular,
+  getLastNameModel,
+} from '../helpers/modify-strings.helper';
 
 @Injectable({
   providedIn: 'root',
@@ -310,8 +318,9 @@ export class StorageService {
     this._crudSvc.getAll(typeModel).subscribe({
       next: (resp: TArrayModel) => {
         this[typeModel] = resp as [];
+        // this[typeModel] = resp as [];
         //TODO - Quitar el console cuando terminemos de depurar
-        console.log(typeModel, this[typeModel]);
+        console.log(typeof typeModel, typeModel, this[typeModel]);
       },
       error: (err) => {
         console.error(
@@ -332,7 +341,11 @@ export class StorageService {
   public getById = (typeModel: TNameModels, id: string) => {
     this._crudSvc.getById(typeModel, id).subscribe({
       next: (resp) => {
-        console.log(resp);
+        // * Creamos un string con la variable para el ultimo tipo seleccionado del modelo
+        const lastNameModel = getLastNameModel(typeModel);
+        this[lastNameModel] = resp as any;
+        //TODO - Quitar el console cuando terminemos de depurar
+        console.log(lastNameModel, this[lastNameModel]);
       },
       error: (err) => {
         console.error(
@@ -345,7 +358,12 @@ export class StorageService {
 
   public getByQuery = (typeModel: TNameModels, params: object) => {
     this._crudSvc.getByQuery(typeModel, params).subscribe({
-      next: (resp) => {},
+      next: (resp) => {
+        //TODO - Quitar el console cuando terminemos de depurar
+
+        //FIXME - Array con todos los datos que coincidan con el query
+        console.log(resp);
+      },
       error: (err) => {
         console.error(
           'Se ha producido un error en la base de datos',
