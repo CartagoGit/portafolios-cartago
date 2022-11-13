@@ -2,7 +2,7 @@ import { TLastNameModels, TNameModels } from '../interfaces/storage.interface';
 
 /**
  * ? Método para retornar el nombre del modelo en singular (y con la primera letra en mayúscula si capitalize es true)
- * @param model - nombre del modelo a formatear
+ * @param model - nombre del modelo o texto a formatear eliminando la ultima letra
  * @param needCapitalize - poner en true si deseamos la primera letra en mayuscula - (default= false)
  * @returns {string} nombre del modelo formateado
  */
@@ -23,8 +23,16 @@ export const capitalize = (text: string): string => {
   return text.charAt(0).toUpperCase() + text.slice(1);
 };
 
-export const getLastNameModel = (typeModel: TNameModels) => {
+/**
+ * ? Método para convertir el nombre del modelo en la key para la variable de su ultimo seleccionado
+ * @param typeModel
+ * @returns {TLastNameModels | string} model formateado a la key de la variable
+ */
+
+export const getLastNameModel = (
+  typeModel: TNameModels | string
+): TLastNameModels | string => {
   const modelFormated = getSingular(typeModel, true);
-  const lastNameModel = ('last' + modelFormated) as TLastNameModels;
+  const lastNameModel = 'last' + modelFormated;
   return lastNameModel;
 };

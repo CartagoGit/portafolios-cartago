@@ -318,7 +318,6 @@ export class StorageService {
     this._crudSvc.getAll(typeModel).subscribe({
       next: (resp: TArrayModel) => {
         this[typeModel] = resp as [];
-        // this[typeModel] = resp as [];
         //TODO - Quitar el console cuando terminemos de depurar
         console.log(typeof typeModel, typeModel, this[typeModel]);
       },
@@ -342,7 +341,7 @@ export class StorageService {
     this._crudSvc.getById(typeModel, id).subscribe({
       next: (resp) => {
         // * Creamos un string con la variable para el ultimo tipo seleccionado del modelo
-        const lastNameModel = getLastNameModel(typeModel);
+        const lastNameModel = getLastNameModel(typeModel) as TLastNameModels;
         this[lastNameModel] = resp as any;
         //TODO - Quitar el console cuando terminemos de depurar
         console.log(lastNameModel, this[lastNameModel]);
