@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, throwError } from 'rxjs';
 import {
@@ -47,7 +47,7 @@ export class CrudService {
   //!GROUP-SECTION - AUXILIARES
   //#endregion
 
-  //GROUP-SECTION - MODELOS
+  //GROUP-SECTION - CRUD
   // #region
 
   public getAll(typeModel: TNameModels): Observable<TArrayModel> {
@@ -60,10 +60,7 @@ export class CrudService {
     );
   }
 
-  public getById(
-    typeModel: TNameModels,
-    id: string | number
-  ): Observable<TModel> {
+  public getById(typeModel: TNameModels, id: string): Observable<TModel> {
     const fullUrl =
       this._createUrl(typeModel, this._endpoints.getById) + '/' + id;
     return this._http.get<IResponse>(fullUrl).pipe(
@@ -75,7 +72,21 @@ export class CrudService {
     );
   }
 
-  //!GROUP-SECTION - MODELOS
+  public getByQuery(
+    typeModel: TNameModels,
+    query: any
+  ): Observable<TArrayModel> {
+    const fullUrl = this._createUrl(typeModel, this._endpoints.getByQuery);
+    const params = new HttpParams({ fromObject: query });
+    return this._http.get<IResponse>(fullUrl, { params }).pipe(
+      map((resp) => {
+        if (resp.ok) return resp[typeModel] as TArrayModel;
+        else throw throwError(() => new Error(resp.msg));
+      })
+    );
+  }
+
+  //!GROUP-SECTION - CRUD
   //#endregion
 
   // !GROUP - Metodos

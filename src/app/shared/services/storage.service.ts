@@ -217,9 +217,51 @@ export class StorageService {
   constructor(private _crudSvc: CrudService) {
     this.getAllModels();
 
-    //TODO Crear metodo para recuperar la id
+    this.getById('projects', '636716716ff6b78ea24ac95a');
+  }
 
-    this._crudSvc.getById('projects', '636716716ff6b78ea24ac95a').subscribe({
+  //GROUP - Métodos
+  //#region
+
+  /**
+   * ? Método para cargar todos los documentos de TODOS los modelos de la base de datos
+   */
+  public getAllModels = () => {
+    //? Creamos una peticion a la api con cada modelo para recuperar todos los datos y almacenarlos
+    for (let model of this.modelTypes) {
+      this.getAllOneModel(model);
+    }
+  };
+
+  /**
+   * ? Método para cargar todos los documentos de un modelo
+   * @param typeModel
+   */
+  public getAllOneModel = (typeModel: TNameModels) => {
+    this._crudSvc.getAll(typeModel).subscribe({
+      next: (resp: TArrayModel) => {
+        this[typeModel] = resp as [];
+        //TODO - Quitar el console cuando terminemos de depurar
+        console.log(typeModel, this[typeModel]);
+      },
+      error: (err) => {
+        console.error(
+          'Se ha producido un error al recuperar ' +
+            typeModel +
+            ' de la base de datos',
+          err.error.msg
+        );
+      },
+    });
+  };
+
+  /**
+   * ? Método para cargar un documento del modelo indicado
+   * @param typeModel
+   * @param id
+   */
+  public getById = (typeModel: TNameModels, id: string) => {
+    this._crudSvc.getById(typeModel, id).subscribe({
       next: (resp) => {
         console.log(resp);
       },
@@ -230,32 +272,6 @@ export class StorageService {
         );
       },
     });
-  }
-
-  //GROUP - Métodos
-  //#region
-
-  /**
-   * ? Método para cargar los modelos de la base de datos
-   */
-  public getAllModels = () => {
-    //? Creamos una peticion a la api con cada modelo para recuperar todos los datos y almacenarlos
-    for (let model of this.modelTypes) {
-      this._crudSvc.getAll(model).subscribe({
-        next: (resp: TArrayModel) => {
-          this[model] = resp as [];
-          console.log(model, this[model]);
-        },
-        error: (err) => {
-          console.error(
-            'Se ha producido un error al recuperar ' +
-              model +
-              ' de la base de datos',
-            err.error.msg
-          );
-        },
-      });
-    }
   };
 
   //!GROUP - Métodos
