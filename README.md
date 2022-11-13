@@ -10,9 +10,9 @@
 
 ## Urls de los servidores que hospedan la api
 
-<https://portafolios-cartago-api.onrender.com/api>
-<https://x0p2m3.deta.dev/api>
-<https://portafolios-cartago.cyclic.app/api>
+- <https://portafolios-cartago-api.onrender.com/api>
+- <https://x0p2m3.deta.dev/api>
+- <https://portafolios-cartago.cyclic.app/api>
 
 ## Trello con el avance del proyecto
 
