@@ -13,7 +13,7 @@ export const consoleImg = (function () {
         .then((blob) => {
           //* Solo procedera si el archivo es una imagen
           if (blob.type.indexOf('image') === 0) {
-            //* Aviso en firefoz si el archivo es mas grande de 8kb
+            // * Aviso en firefoz si el archivo es mas grande de 8kb
             if (
               blob.size > 8192 &&
               navigator.userAgent.indexOf('Firefox') > 0

@@ -4,7 +4,8 @@ import { IAuthor } from '../interfaces/author.interface';
 import { ICourse } from '../interfaces/course.interface';
 import { IExternalLinks, IWebOwner } from '../interfaces/constants';
 import { IProject } from '../interfaces/projects.interface';
-import { TNameModels } from '../interfaces/storage.interface';
+import { TArrayModel, TNameModels } from '../interfaces/storage.interface';
+import { CrudService } from './crud.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,110 @@ import { TNameModels } from '../interfaces/storage.interface';
 export class StorageService {
   //GROUP - Variables
   //#region
+
+  //GROUP-SECTION - Información fija
+  // #region
+  /**
+   * ? Información del dueño o creador de la web
+   */
+  public webOwner: Readonly<IWebOwner> = {
+    name: 'Mario',
+    subname: 'Cabrero Volarich',
+    nick: 'Cartago',
+    subnick: 'Nova',
+    completeName() {
+      return this.name + ' ' + this.subname;
+    },
+    completeNick() {
+      return this.nick + ' ' + this.subnick;
+    },
+  };
+
+  /**
+   * ? Información de rutas externas a la aplicación
+   */
+  public links: Readonly<IExternalLinks> = {
+    email: 'cv2mario@gmail.com',
+    github: 'https://github.com/CartagoGit',
+    portafolios: '#',
+    linkedin: 'https://www.linkedin.com/in/mario-cabrero-volarich',
+    certificatesGithub: 'https://github.com/CartagoGit/Certificados',
+  };
+
+  /**
+   * ? Logo en mensaje de bienvenida en ASCII - DEPRECTATED mientras se use la imagen de logotipo
+   */
+  private _logoAscii: Readonly<string> = `
+    ████████                       █████
+  ███░░░░░███                     ░░███
+ ███     ░░░   ██████   ████████  ███████    ██████    ███████  ██████
+░███          ░░░░░███ ░░███░░███░░░███░    ░░░░░███  ███░░███ ███░░███
+░███           ███████  ░███ ░░░   ░███      ███████ ░███ ░███░███ ░███
+░░███     ███ ███░░███  ░███       ░███ ███ ███░░███ ░███ ░███░███ ░███
+ ░░█████████ ░░████████ █████      ░░█████ ░░████████░░███████░░██████
+  ░░░░░░░░░   ░░░░░░░░ ░░░░░        ░░░░░   ░░░░░░░░  ░░░░░███ ░░░░░░
+                                                      ███ ░███
+                                                     ░░██████
+                                                      ░░░░░░
+  `;
+
+  /**
+   * ? Source del logotipo
+   */
+  private _logoImg: Readonly<string> = 'assets/images/logos/Cartago_logo.png';
+
+  /**
+   * ? Información a mostrar en consola nada mas iniciar la aplicación
+   */
+  public initConsoleMessage = {
+    nameGroup: 'Information - Web owner',
+    groupFontColor: '#f5f5f5f5',
+    groupBackgroundColor: 'linear-gradient(215deg, #45aee0 0%, #513192 100%)',
+    groupAdditionalCss:
+      'border-radius: 5px; padding: 0px 5px; border: 2px solid #513192; font-size: 18px;',
+    titleFontColor: '#896afc',
+    titleBackgroundColor: '',
+    titleAdditionalCss: 'font-size: 16px',
+    dataFontColor: '#45aee0',
+    dataBackgroundColor: '',
+    dataAdditionalCss: 'font-size: 16px',
+    dataToShow: [
+      {
+        title: 'Name',
+        data: this.webOwner.completeName(),
+      },
+      {
+        title: 'Nickname',
+        data: this.webOwner.completeNick(),
+      },
+      {
+        title: 'Email',
+        data: this.links.email,
+      },
+      {
+        title: 'Github',
+        data: this.links.github,
+      },
+      {
+        title: 'Linkedin',
+        data: this.links.linkedin,
+      },
+    ],
+    logoToShow: this._logoImg,
+  };
+
+  /**
+   * ? Tipo a mostrar en el panel derecho
+   */
+  public tipoRightPanel: Readonly<TNameModels> = 'courses';
+
+  /**
+   * ? Array de tipos de modelos
+   */
+  public modelTypes: TNameModels[] = ['courses', 'authors', 'projects'];
+
+  //!GROUP-SECTION - Información fija
+  //#endregion -INFORMACION FIJA
 
   //GROUP-SECTION - Modelo de datos
   // #region
@@ -105,117 +210,37 @@ export class StorageService {
   //!GROUP-SECTION
   // #endregion - SECTION - MODELOS DE DATOS
 
-  //GROUP-SECTION - Información fija
-  // #region
-  /**
-   * ? Información del dueño o creador de la web
-   */
-  public webOwner: Readonly<IWebOwner> = {
-    name: 'Mario',
-    subname: 'Cabrero Volarich',
-    nick: 'Cartago',
-    subnick: 'Nova',
-    completeName() {
-      return this.name + ' ' + this.subname;
-    },
-    completeNick() {
-      return this.nick + ' ' + this.subnick;
-    },
-  };
-
-  /**
-   * ? Información de rutas externas a la aplicación
-   */
-  public links: Readonly<IExternalLinks> = {
-    email: 'cv2mario@gmail.com',
-    github: 'https://github.com/CartagoGit',
-    portafolios: '#',
-    linkedin: 'https://www.linkedin.com/in/mario-cabrero-volarich',
-    certificatesGithub: 'https://github.com/CartagoGit/Certificados',
-  };
-
-  /**
-   * ? Logo en mensaje de bienvenida
-   */
-  private _logoAscii: Readonly<string> = `
-    ████████                       █████
-  ███░░░░░███                     ░░███
- ███     ░░░   ██████   ████████  ███████    ██████    ███████  ██████
-░███          ░░░░░███ ░░███░░███░░░███░    ░░░░░███  ███░░███ ███░░███
-░███           ███████  ░███ ░░░   ░███      ███████ ░███ ░███░███ ░███
-░░███     ███ ███░░███  ░███       ░███ ███ ███░░███ ░███ ░███░███ ░███
- ░░█████████ ░░████████ █████      ░░█████ ░░████████░░███████░░██████
-  ░░░░░░░░░   ░░░░░░░░ ░░░░░        ░░░░░   ░░░░░░░░  ░░░░░███ ░░░░░░
-                                                      ███ ░███
-                                                     ░░██████
-                                                      ░░░░░░
-  `;
-
-  /**
-   * ? Source del logotipo
-   */
-  private _logoImg: Readonly<string> =
-    'assets/images/logos/Cartago_logo.png';
-
-  /**
-   * ? Información a mostrar en consola nada mas iniciar la aplicación
-   */
-  public initConsoleMessage = {
-    nameGroup: 'Information - Web owner',
-    groupFontColor: '#f5f5f5f5',
-    groupBackgroundColor: 'linear-gradient(215deg, #45aee0 0%, #513192 100%)',
-    groupAdditionalCss:
-      'border-radius: 5px; padding: 0px 5px; border: 2px solid #513192; font-size: 18px;',
-    titleFontColor: '#896afc',
-    titleBackgroundColor: '',
-    titleAdditionalCss: 'font-size: 16px',
-    dataFontColor: '#45aee0',
-    dataBackgroundColor: '',
-    dataAdditionalCss: 'font-size: 16px',
-    dataToShow: [
-      {
-        title: 'Name',
-        data: this.webOwner.completeName(),
-      },
-      {
-        title: 'Nickname',
-        data: this.webOwner.completeNick(),
-      },
-      {
-        title: 'Email',
-        data: this.links.email,
-      },
-      {
-        title: 'Github',
-        data: this.links.github,
-      },
-      {
-        title: 'Linkedin',
-        data: this.links.linkedin,
-      },
-    ],
-    logoToShow : this._logoImg
-  };
-
-  /**
-   * ? Tipo a mostrar en el panel derecho
-   */
-  public tipoRightPanel: Readonly<TNameModels> = 'courses';
-
-  //!GROUP-SECTION
-  //#endregion -INFORMACION FIJA
-
-  //!GROUP
+  //!GROUP - Variables
   //#endregion - Variables
 
-  //ANCHOR Constructor
-  constructor() {
-    // this.projects = this._initProjects;
+  //ANCHOR - Constructor
+  constructor(private _crudSvc: CrudService) {
+    for (let model of this.modelTypes) {
+      this._crudSvc.getAll(model).subscribe({
+        next: (resp: TArrayModel) => {
+          this[model] = resp as [];
+        },
+        error: (err) => {
+          console.error(
+            'Se ha producido un error al recuperar ' +
+              model +
+              ' de la base de datos',
+            err
+          );
+        },
+      });
+    }
   }
+ 
 
   //GROUP - Métodos
   //#region
 
-  //!GROUP
+  /**
+   * ? Método para cargar los modelos de la base de datos
+   */
+  public loadModelsFromApi = () => {};
+
+  //!GROUP - Métodos
   //#endregion Métodos
 }

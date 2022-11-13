@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { consoleImg } from '../../helpers/console-image.helper';
-import { IAuthor } from '../../interfaces/author.interface';
 import { CrudService } from '../../services/crud.service';
 import { StorageService } from '../../services/storage.service';
+import { TArrayModel } from '../../interfaces/storage.interface';
 
 @Component({
   selector: 'app-container',
@@ -21,23 +21,11 @@ export class ContainerComponent implements OnInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this._crudSvc.getAll('authors').subscribe({
-      next: (resp: any) => {
-        console.log(resp);
-        // this._storageSvc.authors = (resp as IAuthor[]);
-        this._storageSvc.authors = resp.authors as IAuthor[];
-      },
-      error: (err) => {
-        console.error(
-          'Se ha producido un error al recuperar los autores de la base de datos',
-          err
-        );
-      },
-      complete: () => {
-        console.log('Se han recuperado los autores de la base de datos.');
-      },
-    });
     this._showInitConsoleMessage();
+
+
+
+    this._storageSvc.loadModelsFromApi();
   }
 
   //GROUP - Metodos
@@ -82,6 +70,7 @@ export class ContainerComponent implements OnInit {
 
       console.log(messageToShow, titleCss, dataCss);
     }
+    console.log('\n\n');
     console.groupEnd();
   };
 
