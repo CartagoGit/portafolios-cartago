@@ -292,12 +292,21 @@ export class StorageService {
 
   //ANCHOR - Constructor
   constructor(private _crudSvc: CrudService) {
-    this.getAllModels();
+    // this.getAllModels();
 
-    this.getById('projects', '636716716ff6b78ea24ac95a');
+    // //TODO Eliminar las llamadas para probar los metodos
+    // this.getById('projects', '636716716ff6b78ea24ac95a');
+    // this.getByQuery('authors', { name: 'na' });
+    this.getByQuery('authors', { name: 'na' });
   }
 
   //GROUP - Métodos
+  //#region
+
+  //GROUP-SECTION - Peticiones a la api
+  // #region
+
+  //SECTION - Peticiones get
   //#region
 
   /**
@@ -321,13 +330,8 @@ export class StorageService {
         //TODO - Quitar el console cuando terminemos de depurar
         console.log(typeof typeModel, typeModel, this[typeModel]);
       },
-      error: (err) => {
-        console.error(
-          'Se ha producido un error al recuperar ' +
-            typeModel +
-            ' de la base de datos',
-          err.error.msg
-        );
+      error: (error) => {
+        this._crudSvc.showErrorInConsole(error);
       },
     });
   };
@@ -346,31 +350,38 @@ export class StorageService {
         //TODO - Quitar el console cuando terminemos de depurar
         console.log(lastNameModel, this[lastNameModel]);
       },
-      error: (err) => {
-        console.error(
-          'Se ha producido un error en la base de datos',
-          err.error.msg
-        );
+      error: (error) => {
+        this._crudSvc.showErrorInConsole(error);
       },
     });
   };
 
+  /**
+   * ? Metodo para recuperar los elementos que coincidan con la query
+   * @param typeModel
+   * @param params Example -> {name : 'Mario'}
+   */
   public getByQuery = (typeModel: TNameModels, params: object) => {
     this._crudSvc.getByQuery(typeModel, params).subscribe({
       next: (resp) => {
-        //TODO - Quitar el console cuando terminemos de depurar
-
         //FIXME - Array con todos los datos que coincidan con el query
-        console.log(resp);
+
+        //TODO - Quitar el console cuando terminemos de depurar
+        console.log('query', resp);
       },
-      error: (err) => {
-        console.error(
-          'Se ha producido un error en la base de datos',
-          err.error.msg
-        );
+      error: (error) => {
+        this._crudSvc.showErrorInConsole(error);
       },
     });
   };
+
+  //!SECTION - Peticiones Get
+  //#endregion
+
+  //FIXME - Hacer la peticion post para crear un documento en los modelos
+
+  //!GROUP-SECTION - Peticiones a la api
+  //#endregion
 
   //!GROUP - Métodos
   //#endregion Métodos
