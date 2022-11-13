@@ -215,6 +215,8 @@ export class StorageService {
 
   //ANCHOR - Constructor
   constructor(private _crudSvc: CrudService) {
+
+    //? Creamos una peticion a la api con cada modelo para recuperar todos los datos y almacenarlos
     for (let model of this.modelTypes) {
       this._crudSvc.getAll(model).subscribe({
         next: (resp: TArrayModel) => {
@@ -231,7 +233,7 @@ export class StorageService {
       });
     }
   }
- 
+
 
   //GROUP - Métodos
   //#region
