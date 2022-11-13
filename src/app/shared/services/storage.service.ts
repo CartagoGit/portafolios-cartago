@@ -137,6 +137,18 @@ export class StorageService {
   }
 
   /**
+   * ? Último proyecto buscado
+   */
+  private _lastProject!: IProject;
+  set lastProject(value: IProject) {
+    this._lastProject = value;
+    this._subjectLastProject$.next(value);
+  }
+  get lastProject(): IProject {
+    return this._lastProject;
+  }
+
+  /**
    * ? Subject de lista de proyectos
    */
   private _subjectProjects$: Subject<IProject[]> = new Subject<IProject[]>();
@@ -146,6 +158,17 @@ export class StorageService {
    */
   public obsProjects: Observable<IProject[]> =
     this._subjectProjects$.asObservable();
+
+  /**
+   * ? Subject del ultimo proyecto buscado
+   */
+  private _subjectLastProject$: Subject<IProject> = new Subject<IProject>();
+
+  /**
+   * ? Observable del ultimo proyecto buscado
+   */
+  public obsLastProject: Observable<IProject> =
+    this._subjectLastProject$.asObservable();
 
   //!SECTION
   // #endregion PROYECTOS
@@ -165,6 +188,18 @@ export class StorageService {
   }
 
   /**
+   * ? Último curso buscado
+   */
+  private _lastCourse!: ICourse;
+  set lastCourse(value: ICourse) {
+    this._lastCourse = value;
+    this._subjectLastCourse$.next(value);
+  }
+  get lastCourse(): ICourse {
+    return this._lastCourse;
+  }
+
+  /**
    * ? Subject de lista de cursos
    */
   private _subjectCourses$: Subject<ICourse[]> = new Subject<ICourse[]>();
@@ -174,6 +209,17 @@ export class StorageService {
    */
   public obsCourses: Observable<ICourse[]> =
     this._subjectCourses$.asObservable();
+
+  /**
+   * ? Subject del ultimo curso buscado
+   */
+  private _subjectLastCourse$: Subject<ICourse> = new Subject<ICourse>();
+
+  /**
+   * ? Observable del ultimo curso buscado
+   */
+  public obsLastCourse: Observable<ICourse> =
+    this._subjectLastCourse$.asObservable();
 
   //!SECTION
   // #endregion CURSOS
@@ -194,15 +240,38 @@ export class StorageService {
   }
 
   /**
-   * ? Subject de lista de cursos
+   * ? Último autor buscado
+   */
+  private _lastAuthor!: IAuthor;
+  set lastAuthor(value: IAuthor) {
+    this._lastAuthor = value;
+    this._subjectLastAuthor$.next(value);
+  }
+  get lastAuthor(): IAuthor {
+    return this._lastAuthor;
+  }
+
+  /**
+   * ? Subject de lista de autores
    */
   private _subjectAuthors$: Subject<IAuthor[]> = new Subject<IAuthor[]>();
 
   /**
-   * ? Observable de la lista de cursos
+   * ? Observable de la lista de autores
    */
   public obsAuthors: Observable<IAuthor[]> =
     this._subjectAuthors$.asObservable();
+
+  /**
+   * ? Subject del ultimo autor buscado
+   */
+  private _subjectLastAuthor$: Subject<IAuthor> = new Subject<IAuthor>();
+
+  /**
+   * ? Observable del ultimo autor buscado
+   */
+  public obsLastAuthor: Observable<IAuthor> =
+    this._subjectLastAuthor$.asObservable();
 
   //!SECTION
   // #endregion - SECTION - AUTORES
@@ -265,6 +334,18 @@ export class StorageService {
       next: (resp) => {
         console.log(resp);
       },
+      error: (err) => {
+        console.error(
+          'Se ha producido un error en la base de datos',
+          err.error.msg
+        );
+      },
+    });
+  };
+
+  public getByQuery = (typeModel: TNameModels, params: object) => {
+    this._crudSvc.getByQuery(typeModel, params).subscribe({
+      next: (resp) => {},
       error: (err) => {
         console.error(
           'Se ha producido un error en la base de datos',

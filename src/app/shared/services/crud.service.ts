@@ -74,10 +74,10 @@ export class CrudService {
 
   public getByQuery(
     typeModel: TNameModels,
-    query: any
+    query: object
   ): Observable<TArrayModel> {
     const fullUrl = this._createUrl(typeModel, this._endpoints.getByQuery);
-    const params = new HttpParams({ fromObject: query });
+    const params = new HttpParams({ fromObject: <any>query });
     return this._http.get<IResponse>(fullUrl, { params }).pipe(
       map((resp) => {
         if (resp.ok) return resp[typeModel] as TArrayModel;
