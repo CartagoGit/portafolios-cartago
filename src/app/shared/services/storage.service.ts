@@ -215,25 +215,22 @@ export class StorageService {
 
   //ANCHOR - Constructor
   constructor(private _crudSvc: CrudService) {
+    this.getAllModels();
 
-    //? Creamos una peticion a la api con cada modelo para recuperar todos los datos y almacenarlos
-    for (let model of this.modelTypes) {
-      this._crudSvc.getAll(model).subscribe({
-        next: (resp: TArrayModel) => {
-          this[model] = resp as [];
-        },
-        error: (err) => {
-          console.error(
-            'Se ha producido un error al recuperar ' +
-              model +
-              ' de la base de datos',
-            err
-          );
-        },
-      });
-    }
+    //TODO Crear metodo para recuperar la id
+
+    this._crudSvc.getById('projects', '636716716ff6b78ea24ac95a').subscribe({
+      next: (resp) => {
+        console.log(resp);
+      },
+      error: (err) => {
+        console.error(
+          'Se ha producido un error en la base de datos',
+          err.error.msg
+        );
+      },
+    });
   }
-
 
   //GROUP - Métodos
   //#region
@@ -241,7 +238,25 @@ export class StorageService {
   /**
    * ? Método para cargar los modelos de la base de datos
    */
-  public loadModelsFromApi = () => {};
+  public getAllModels = () => {
+    //? Creamos una peticion a la api con cada modelo para recuperar todos los datos y almacenarlos
+    for (let model of this.modelTypes) {
+      this._crudSvc.getAll(model).subscribe({
+        next: (resp: TArrayModel) => {
+          this[model] = resp as [];
+          console.log(model, this[model]);
+        },
+        error: (err) => {
+          console.error(
+            'Se ha producido un error al recuperar ' +
+              model +
+              ' de la base de datos',
+            err.error.msg
+          );
+        },
+      });
+    }
+  };
 
   //!GROUP - Métodos
   //#endregion Métodos

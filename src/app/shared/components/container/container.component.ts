@@ -1,31 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { consoleImg } from '../../helpers/console-image.helper';
-import { CrudService } from '../../services/crud.service';
 import { StorageService } from '../../services/storage.service';
-import { TArrayModel } from '../../interfaces/storage.interface';
 
 @Component({
   selector: 'app-container',
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss'],
 })
-export class ContainerComponent implements OnInit {
+export class ContainerComponent {
   public title: string = 'Portafolios de Mario Cabrero Volarich - CartagoNova';
 
   //ANCHOR - CONSTRUCTOR
-  constructor(
-    private _storageSvc: StorageService,
-    private _crudSvc: CrudService
-  ) {}
-
-  ngOnInit(): void {}
+  constructor(private _storageSvc: StorageService) {}
 
   ngAfterViewInit(): void {
     this._showInitConsoleMessage();
-
-
-
-    this._storageSvc.loadModelsFromApi();
   }
 
   //GROUP - Metodos

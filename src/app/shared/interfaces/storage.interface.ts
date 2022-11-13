@@ -6,12 +6,8 @@ export type TNameModels = 'courses' | 'projects' | 'authors';
 export type TModel = ICourse | IProject | IAuthor;
 export type TArrayModel = ICourse[] | IProject[] | IAuthor[];
 
-interface IKeyUnknownArray {
-  [key: string]: [];
-}
-
 export type IResponse = {
   ok: boolean;
   msg: string;
-  [key: string]: [] | string | boolean;
+  [key: string]: TArrayModel | string | boolean | TModel;
 };

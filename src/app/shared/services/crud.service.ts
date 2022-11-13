@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, throwError } from 'rxjs';
 import {
@@ -60,10 +60,19 @@ export class CrudService {
     );
   }
 
-  public getById(typeModel: TNameModels, id: string): Observable<TModel> {
-    const fullUrl = this._createUrl(typeModel, this._endpoints.getById);
-    const params = new HttpParams({ fromObject: { id: id } });
-    return this._http.get<TModel>(fullUrl, { params });
+  public getById(
+    typeModel: TNameModels,
+    id: string | number
+  ): Observable<TModel> {
+    const fullUrl =
+      this._createUrl(typeModel, this._endpoints.getById) + '/' + id;
+    return this._http.get<IResponse>(fullUrl).pipe(
+      map((resp) => {
+        if (resp.ok)
+          return resp[typeModel.slice(0, typeModel.length - 1)] as TModel;
+        else throw throwError(() => new Error(resp.msg));
+      })
+    );
   }
 
   //!GROUP-SECTION - MODELOS
