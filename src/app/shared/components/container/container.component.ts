@@ -23,9 +23,16 @@ export class ContainerComponent {
   /**
    * ? Metodo para crear el mensaje inicial a mostrar en la consola
    */
-  private _showInitConsoleMessage = async (size = 250) => {
+  private _showInitConsoleMessage = async (
+    size: number = 250
+  ): Promise<void> => {
     const dataMsg = this._storageSvc.initConsoleMessage;
 
+    //* Cargamos la imagen del logo  en la consola, donde tambien cargaremos el resto del mensaje
+    const imgInConsole = await consoleImg.load(dataMsg.logoToShow, { size });
+
+
+    //? Esperamos a que la imagen este cargada para crear el grupo
     //* Creamos el grupo de datos de Información
     console.group(
       '%c' + dataMsg.nameGroup,
@@ -36,8 +43,7 @@ export class ContainerComponent {
         '; ' +
         dataMsg.groupAdditionalCss
     );
-    //* Cargamos la imagen del logo  en la consola
-    await consoleImg.load(dataMsg.logoToShow, { size });
+    console.log('%c     ', imgInConsole);
     //* Cargamos la lista de datos iniciales
     for (const item of dataMsg.dataToShow) {
       const messageToShow = '%c' + item.title + ': ' + '%c' + item.data;

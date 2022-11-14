@@ -1,6 +1,6 @@
 /* consoleimg v1.0 - chris johnson / @defaced
-* ? Codigo de Chris Johnson modificado para uso personal del proyecto
-*/
+ * ? Codigo de Chris Johnson modificado para uso personal del proyecto
+ */
 export const consoleImg = (function () {
   return {
     load: async (src: string, { size = 320, color = 'transparent' } = {}) => {
@@ -34,7 +34,7 @@ export const consoleImg = (function () {
        * ? Funcion para esperar la llamada asyncrona a que el lector del archivo termine de cargar
        * @returns {Promise<void>}
        */
-      const readerFinishedOn = (): Promise<void> => {
+      const readerFinishedOn = (): Promise<string> => {
         return new Promise((resolve) => {
           fileReader.addEventListener(
             'load',
@@ -47,9 +47,10 @@ export const consoleImg = (function () {
                 size +
                 'px; background-size: contain; background-color:' +
                 color;
-              //* Mostramos la imagen en pantalla
-              console.log('%c     ', style);
-              resolve(undefined);
+
+             //* Mostramos la imagen en pantalla
+              // console.log('%c     ', style);
+              resolve(style);
             },
             false
           );
@@ -57,8 +58,7 @@ export const consoleImg = (function () {
       };
 
       //? Esperamos a que el lector haya terminado
-      await readerFinishedOn();
+      return await readerFinishedOn();
     },
   };
 })();
-
