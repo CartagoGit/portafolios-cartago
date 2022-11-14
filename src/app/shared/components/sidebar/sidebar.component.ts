@@ -13,9 +13,9 @@ export class SidebarComponent implements OnInit {
 
   public projects: IProject[] = [];
 
-  //? Cargamos los proyectos para contar el numero y listarlo en el lateral cuando el panel no esta listado
-  constructor(private _storageService: StorageService) {
-    this.projects = this._storageService.projects;
+
+  constructor(public storageSvc: StorageService) {
+
   }
 
   ngOnInit(): void {}

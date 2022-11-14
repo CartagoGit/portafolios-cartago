@@ -14,6 +14,10 @@
     font-weight: 600;
     h1 {
       all: unset;
+      transition: all ease 300ms;
+      &:hover {
+        color: $blue-primary;
+      }
     }
     .logo {
       overflow: visible;
@@ -44,30 +48,45 @@
       flex-direction: row;
       justify-self: end;
 
-      > input {
+      .input-search {
         all: unset;
         border-radius: 15px 0 0 15px;
-        border: 1px solid $lightgrey;
+        border: 2px solid $lightgrey;
         background: $background-grey-light;
         color: $darkgrey;
         border-right: none;
         padding-left: 15px;
         padding-right: 5px;
+        transition: all 300ms ease;
+        &:focus {
+          border: 2px solid $blue-primary;
+          border-right: none;
+          & + .btn-search {
+            border: 2px solid $blue-primary;
+            border-left: none;
+          }
+        }
       }
-      > *:last-child {
+      & .btn-search {
         padding: 5px;
         padding-left: 10px;
         padding-right: 10px;
         margin-right: 45px;
-        border: $lightgrey 1px solid;
+        border: $lightgrey 2px solid;
         border-left: none;
         box-shadow: $shadow-secondary;
         border-radius: 0 15px 15px 0;
         background: $background-primary-inverse;
         transition: all 300ms ease;
         &:hover {
-          opacity: 0.5;
+          opacity: 0.8;
+          color: $lightblue;
         }
+      }
+
+      &:has(.btn-search:hover) .input-search {
+        // opacity: 0.8;
+        color: $blue-primary;
       }
     }
   }

@@ -13,8 +13,13 @@
     />
   </div>
   <div class="searcher">
-    <input type="text" [placeholder]="inputSearcherPlaceholder" />
-    <div class="pointer" (click)="onClickSearcher()">
+    <input
+      class="input-search"
+      spellcheck="false"
+      type="text"
+      [placeholder]="inputSearcherPlaceholder"
+    />
+    <div class="btn-search pointer" (click)="onClickSearcher()">
       <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
     </div>
   </div>

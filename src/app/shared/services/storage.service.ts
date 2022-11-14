@@ -123,6 +123,11 @@ export class StorageService {
    */
   public modelTypes: TNameModels[] = ['courses', 'authors', 'projects'];
 
+  /**
+   * ? Titulo que aparecerá en el sidebar
+   */
+  public titleSidebar : string = 'Portafolios'
+
   //!GROUP-SECTION - Información fija
   //#endregion -INFORMACION FIJA
 
