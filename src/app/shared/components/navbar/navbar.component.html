@@ -1,7 +1,7 @@
 <div class="nav-container">
   <div class="title">
     <h1>
-      <a href="https://fernando-herrera.com/#/" target="_blank">{{ title }}</a>
+      <a [routerLink]="['/']">{{ title }}</a>
     </h1>
   </div>
   <div class="logo" (click)="logoClicked()">
@@ -12,8 +12,10 @@
       (click)="logoClicked()"
     />
   </div>
-  <div class="create-by">
-    <div>Creado por</div>
-    <div>Mario Cabrero Volarich &#169;</div>
+  <div class="searcher">
+    <input type="text" value="aqui debe ir un buscador" />
+    <div class="pointer" (click)="clickBuscar()">
+      <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+    </div>
   </div>
 </div>

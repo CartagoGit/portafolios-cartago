@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  public title: string = 'Portafolios';
+  public title: string = 'Portafolios de Mario Cabrero Volarich';
 
   constructor(private _router: Router) {}
 
@@ -15,5 +15,10 @@ export class NavbarComponent implements OnInit {
 
   public logoClicked(): void {
     this._router.navigate(['/']);
+  }
+
+  public clickBuscar(): void {
+    //REVIEW - Implementar
+    console.log('has pulsado el buscador');
   }
 }

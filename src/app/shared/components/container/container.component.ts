@@ -31,7 +31,6 @@ export class ContainerComponent {
     //* Cargamos la imagen del logo  en la consola, donde tambien cargaremos el resto del mensaje
     const imgInConsole = await consoleImg.load(dataMsg.logoToShow, { size });
 
-
     //? Esperamos a que la imagen este cargada para crear el grupo
     //* Creamos el grupo de datos de Información
     console.group(
