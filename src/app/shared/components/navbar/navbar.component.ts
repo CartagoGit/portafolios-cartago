@@ -8,16 +8,17 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   public title: string = 'Portafolios de Mario Cabrero Volarich';
+  public inputSearcherPlaceholder : string = 'Buscar...'
 
   constructor(private _router: Router) {}
 
   ngOnInit(): void {}
 
-  public logoClicked(): void {
+  public onClickLogo(): void {
     this._router.navigate(['/']);
   }
 
-  public clickBuscar(): void {
+  public onClickSearcher(): void {
     //REVIEW - Implementar
     console.log('has pulsado el buscador');
   }

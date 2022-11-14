@@ -4,17 +4,17 @@
       <a [routerLink]="['/']">{{ title }}</a>
     </h1>
   </div>
-  <div class="logo" (click)="logoClicked()">
+  <div class="logo" (click)="onClickLogo()">
     <img
       src="../../../../assets/images/logos/Cartago_logo.png"
       class="logo-image pointer"
       alt="Logotipo de Cartago"
-      (click)="logoClicked()"
+      (click)="onClickLogo()"
     />
   </div>
   <div class="searcher">
-    <input type="text" value="aqui debe ir un buscador" />
-    <div class="pointer" (click)="clickBuscar()">
+    <input type="text" [placeholder]="inputSearcherPlaceholder" />
+    <div class="pointer" (click)="onClickSearcher()">
       <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
     </div>
   </div>

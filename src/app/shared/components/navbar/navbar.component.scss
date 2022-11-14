@@ -51,17 +51,17 @@
         background: $background-grey-light;
         color: $darkgrey;
         border-right: none;
-        text-align: right;
-        padding-left: 10px;
+        padding-left: 15px;
         padding-right: 5px;
       }
       > *:last-child {
         padding: 5px;
         padding-left: 10px;
         padding-right: 10px;
-        margin-right: 50px;
+        margin-right: 45px;
         border: $lightgrey 1px solid;
         border-left: none;
+        box-shadow: $shadow-secondary;
         border-radius: 0 15px 15px 0;
         background: $background-primary-inverse;
         transition: all 300ms ease;
