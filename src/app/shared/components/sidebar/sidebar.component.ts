@@ -1,5 +1,4 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { IProject } from '../../interfaces/projects.interface';
 import { StorageService } from '../../services/storage.service';
 
 @Component({
@@ -11,16 +10,11 @@ export class SidebarComponent implements OnInit {
   //? Iniciamos el sidebar cerrado
   @HostBinding('class.expanded') isExpanded: boolean = false;
 
-  public projects: IProject[] = [];
+  public list: any[] = [];
 
 
   constructor(public storageSvc: StorageService) {
-
   }
-
   ngOnInit(): void {}
 
-  public expandSidebar(): void {
-    this.isExpanded = !this.isExpanded;
-  }
 }

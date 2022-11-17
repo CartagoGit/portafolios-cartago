@@ -4,12 +4,12 @@
       <a [routerLink]="['/']">{{ title }}</a>
     </h1>
   </div>
-  <div class="logo" (click)="onClickLogo()">
+  <div class="logo" [routerLink]="['/']">
     <img
       src="../../../../assets/images/logos/Cartago_logo.png"
       class="logo-image pointer"
       alt="Logotipo de Cartago"
-      (click)="onClickLogo()"
+      [routerLink]="['/']"
     />
   </div>
   <div class="searcher">

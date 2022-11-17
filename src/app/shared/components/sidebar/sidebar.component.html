@@ -1,14 +1,16 @@
 <section class="sidebar sidebar-top">
-  <div><h2>{{storageSvc.titleSidebar}}</h2></div>
+  <div>
+    <h2>{{ storageSvc.titleSidebar }}</h2>
+  </div>
   <div class="icons-section">
     <button
       type="button"
       class="pointer expand-button button-icon"
-      (click)="expandSidebar()"
+      (click)="isExpanded = !isExpanded"
     >
       <i
         class="fa-solid fa-arrow-right icon"
-        [ngClass]="isExpanded ? 'expanded-icon' : ''"
+        [ngClass]="{ 'expanded-icon': !!isExpanded }"
       ></i>
     </button>
   </div>
@@ -19,7 +21,7 @@
   </div>
   <div class="icons-section">
     <div class="list-icons">
-      <div *ngFor="let numProject of projects; let i = index" class="area-icon">
+      <div *ngFor="let numProject of list; let i = index" class="area-icon">
         <span class="icon">{{ i + 1 }}</span>
         <!-- [ngClass]="isExpanded ? 'expanded-icon' : ''" -->
       </div>
