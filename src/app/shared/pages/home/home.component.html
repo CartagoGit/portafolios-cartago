@@ -30,44 +30,5 @@
     <!-- <app-list-badged class="card"></app-list-badged> -->
   </div>
 
-  <!--? ENLACES A PUNTOS DE INTERES SOBRE MÍ -->
-  <div class="contacto-home card">
-    <h2>
-      También puedes ver más información sobre mí, mis proyectos y mis
-      certificados:
-    </h2>
-    <div class="links">
-      <a
-        class="card card-hover portafolios"
-        [href]="links.portafolios"
-        target="_blank"
-        >Portafolios</a
-      ><a
-        class="card card-hover certificates"
-        [href]="links.certificatesGithub"
-        target="_blank"
-        >Certificados</a
-      >
-      <a
-        class="card card-hover curriculum"
-        [href]="links.curriculum"
-        target="_blank"
-        >Curriculum</a
-      >
-      <a class="card card-hover github" [href]="links.github" target="_blank"
-        >Github</a
-      >
-      <a
-        class="card card-hover linkedin"
-        [href]="links.linkedin"
-        target="_blank"
-        >LinkedIn
-      </a>
 
-      <!-- TODO mostrar mensaje de que el email se ha copiado al portapapeles -->
-      <a class="card card-hover email" (click)="copyToClipboard(links.email)"
-        >Email</a
-      >
-    </div>
-  </div>
 </div>

@@ -1,0 +1,19 @@
+:host {
+  width: 100%;
+  .footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+  }
+  .button-to-up {
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    .icon{
+      transform: rotate(-90deg);
+    }
+  }
+}

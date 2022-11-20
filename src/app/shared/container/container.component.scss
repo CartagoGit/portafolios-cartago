@@ -4,21 +4,24 @@
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-columns: 60px 480px 1fr;
-  grid-template-rows: 80px 1fr;
+  grid-template-columns: $side-bar-not-expanded-width $side-bar-expanded-width minmax(
+      0,
+      1fr
+    );
+  grid-template-rows: $top-bar-height minmax(0, 1fr);
   background-color: $blackgrey;
   color: $light;
   .container {
     background: $background-primary;
     grid-column: 2 / span 3;
     grid-row: 2;
-    border-radius: 20px 0 0 0;
+    border-radius: $border-radius-primary 0 0 0;
     color: $darkgrey;
     scrollbar-gutter: stable both-edges;
     &:last-child {
       overflow-y: auto;
       overflow-x: hidden;
-      &> * > * {
+      & > * > * {
         padding-top: 50px;
       }
     }
@@ -31,5 +34,15 @@
     grid-column: span 2 /3;
     grid-row: 1 / span 2;
     height: 100%;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: $side-bar-not-expanded-width;
+    > *{
+      grid-column: 2;
+    }
   }
 }
