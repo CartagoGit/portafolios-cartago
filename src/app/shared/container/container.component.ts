@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { consoleImg } from '../../helpers/console-image.helper';
-import { StorageService } from '../../services/storage.service';
+import { consoleImg } from '../helpers/console-image.helper';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-container',

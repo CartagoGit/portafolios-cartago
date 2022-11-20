@@ -1,4 +1,4 @@
-import { TLastNameModels, TNameModels } from '../interfaces/storage.interface';
+import { TLastNameModels, TNameModels } from '../interfaces/storage/storage.interface';
 
 /**
  * ? Método para retornar el nombre del modelo en singular (y con la primera letra en mayúscula si capitalize es true)

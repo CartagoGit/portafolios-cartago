@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
-import { IExternalLinks } from '../../interfaces/constants';
+import { IExternalLinks } from '../../interfaces/storage/constants';
 
 @Component({
   selector: 'app-home',

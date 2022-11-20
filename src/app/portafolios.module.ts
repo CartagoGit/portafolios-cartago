@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PortafoliosRoutingModule } from './portafolios-routing.module';
 import { ProyectosModule } from './projects/proyectos.module';
 import { SharedModule } from './shared/shared.module';
-import { ContainerComponent } from './shared/components/container/container.component';
+import { ContainerComponent } from './shared/container/container.component';
 
 @NgModule({
   declarations: [],

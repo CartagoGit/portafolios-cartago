@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ContainerComponent } from './components/container/container.component';
-import { TopbarComponent } from './components/topbar/topbar.component';
+import { ContainerModule } from './container/container.module';
+import { SocialLinksComponent } from './components/social-links/social-links.component';
 
 @NgModule({
-  declarations: [ TopbarComponent, SidebarComponent, HomeComponent, ContainerComponent],
-  imports: [CommonModule, SharedRoutingModule],
-  exports: [ContainerComponent]
+  declarations: [HomeComponent, SocialLinksComponent],
+  imports: [CommonModule, SharedRoutingModule, ContainerModule],
+  exports: [],
 })
 export class SharedModule {}

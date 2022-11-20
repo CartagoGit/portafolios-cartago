@@ -5,10 +5,10 @@ import {
   TNameModels,
   TArrayModel,
   TModel,
-} from '../interfaces/storage.interface';
+} from '../interfaces/storage/storage.interface';
 
 import { environment } from '../../../core/environments/environment';
-import { IResponse } from '../interfaces/storage.interface';
+import { IResponse } from '../interfaces/storage/storage.interface';
 import { getSingular } from '../helpers/modify-strings.helper';
 
 @Injectable({

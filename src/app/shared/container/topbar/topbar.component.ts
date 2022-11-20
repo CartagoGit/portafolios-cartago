@@ -1,18 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-topbar',
+  selector: 'container-topbar',
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss'],
 })
-export class TopbarComponent implements OnInit {
+export class TopbarComponent {
   public title: string = 'Portafolios de Mario Cabrero Volarich';
-  public inputSearcherPlaceholder : string = 'Buscar...'
+  public inputSearcherPlaceholder: string = 'Buscar...';
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   public onClickSearcher(): void {
     //REVIEW - Implementar

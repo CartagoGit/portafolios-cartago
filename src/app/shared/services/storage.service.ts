@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { IAuthor } from '../interfaces/author.interface';
-import { ICourse } from '../interfaces/course.interface';
-import { IExternalLinks, IWebOwner } from '../interfaces/constants';
-import { IProject } from '../interfaces/projects.interface';
+import { IAuthor } from '../interfaces/storage/author.interface';
+import { ICourse } from '../interfaces/storage/course.interface';
+import { IExternalLinks, IWebOwner } from '../interfaces/storage/constants';
+import { IProject } from '../interfaces/storage/projects.interface';
 import {
   TArrayModel,
   TNameModels,
   TLastNameModels,
-} from '../interfaces/storage.interface';
+} from '../interfaces/storage/storage.interface';
 import { CrudService } from './crud.service';
 import {
   getSingular,
@@ -76,7 +76,7 @@ export class StorageService {
   private _logoImg: Readonly<string> = 'assets/images/logos/Cartago_logo.png';
 
   /**
-   * ? Información a mostrar en consola nada mas iniciar la aplicación
+   * ? Información y configruación a mostrar en consola nada mas iniciar la aplicación
    */
   public initConsoleMessage = {
     nameGroup: 'Information - Web owner',

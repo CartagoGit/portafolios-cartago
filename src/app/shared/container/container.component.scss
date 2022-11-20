@@ -13,14 +13,9 @@
     grid-column: 2 / span 3;
     grid-row: 2;
     border-radius: 20px 0 0 0;
-    // padding-left: 4px;
-    // padding: 30px;
-    // padding-top: 50px;
     color: $darkgrey;
     scrollbar-gutter: stable both-edges;
     &:last-child {
-      // margin-top: 50px;
-      // padding-top: 50px;
       overflow-y: auto;
       overflow-x: hidden;
       &> * > * {
