@@ -43,21 +43,14 @@ export class StorageService {
   // public links: Readonly<IExternalLinks> = [
   public links: Readonly<IExternalLinks[]> = [
     {
-      text: 'GitHub',
-      field: 'github',
-      link: 'https://github.com/CartagoGit',
-      image: '/assets/images/pics/github.jpg',
-      type: 'external',
-      iconClass: 'fa-brands fa-github',
-    },
-    {
       text: 'Portafolios',
       field: 'portafolios',
-      link: '/',
+      link: '/home',
       image: '/assets/images/pics/portafolios.jpg',
       type: 'internal',
       iconClass: 'fa-solid fa-folder-tree',
     },
+
     {
       text: 'LinkedIn',
       field: 'linkedin',
@@ -66,24 +59,34 @@ export class StorageService {
       type: 'external',
       iconClass: 'fa-brands fa-linkedin',
     },
+    {
+      text: 'GitHub',
+      field: 'github',
+      link: 'https://github.com/CartagoGit',
+      image: '/assets/images/pics/github.jpg',
+      type: 'external',
+      iconClass: 'fa-brands fa-github',
+    },
+
+    {
+      text: 'Curriculum',
+      field: 'curriculum',
+      link: '/home/curriculum',
+      image: '/assets/images/pics/curriculum.jpg',
+      type: 'internal',
+      iconClass: 'fa-solid fa-building-columns',
+    },
     //TODO - Crear la pagina donde mostrar los certificados hospedados en github
     {
       text: 'Certificados',
       field: 'certificates',
-      link: 'https://github.com/CartagoGit/Certificados',
+      link: '/home/certificados',
       image: '/assets/images/pics/certificate.jpg',
       type: 'internal',
       iconClass: 'fa-solid fa-graduation-cap',
     },
     //TODO Añadir enlace o crear pagina con el curriculum
-    {
-      text: 'Curriculum',
-      field: 'curriculum',
-      link: '',
-      image: '/assets/images/pics/curriculum.jpg',
-      type: 'internal',
-      iconClass: 'fa-solid fa-building-columns',
-    },
+
     {
       text: 'Email',
       field: 'email',
