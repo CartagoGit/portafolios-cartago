@@ -142,15 +142,15 @@ export class StorageService {
       },
       {
         title: 'Email',
-        data: this.links.find((link) => link.field === 'email'),
+        data: this.links.find((link) => link.field === 'email')?.link,
       },
       {
         title: 'Github',
-        data: this.links.find((link) => link.field === 'github'),
+        data: this.links.find((link) => link.field === 'github')?.link,
       },
       {
         title: 'Linkedin',
-        data: this.links.find((link) => link.field === 'linkedin'),
+        data: this.links.find((link) => link.field === 'linkedin')?.link,
       },
     ],
     logoToShow: this._logoImg,
