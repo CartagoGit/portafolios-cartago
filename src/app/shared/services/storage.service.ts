@@ -49,6 +49,8 @@ export class StorageService {
     portafolios: '#',
     linkedin: 'https://www.linkedin.com/in/mario-cabrero-volarich',
     certificatesGithub: 'https://github.com/CartagoGit/Certificados',
+    //TODO Añadir enlace o crear pagina con el curriculum
+    curriculum: ''
   };
 
   /**

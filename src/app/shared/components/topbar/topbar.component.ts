@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  selector: 'app-topbar',
+  templateUrl: './topbar.component.html',
+  styleUrls: ['./topbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class TopbarComponent implements OnInit {
   public title: string = 'Portafolios de Mario Cabrero Volarich';
   public inputSearcherPlaceholder : string = 'Buscar...'
 

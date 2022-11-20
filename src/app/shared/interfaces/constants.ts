@@ -4,6 +4,7 @@ export interface IExternalLinks {
   portafolios: string;
   linkedin: string;
   certificatesGithub: string;
+  curriculum: string;
 }
 
 export interface IWebOwner {

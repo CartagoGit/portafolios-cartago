@@ -1,37 +1,40 @@
 @use "/src/assets/styles/vars" as *;
 
 :host {
+  height: 100%;
+
   display: grid;
   text-align: center;
   overflow: hidden;
 
   grid-template-rows: 80px auto;
-  grid-column: span 2 /3;
-  grid-row: 1 / span 2;
+
   transform: translateX(-480px);
   transition: transform 0.2s linear, border 0.2s linear;
   border-right: 0px solid $lightgrey;
   background-color: $blackgrey;
   will-change: transform;
-  z-index: 2;
+
 
   &.expanded {
     background: $background-gradient-grey-invert;
     box-shadow: $shadow-primary;
     transform: translateX(0);
     border-right: 1px solid $lightgrey;
+    position: relative;
+    z-index: 10;
   }
-  &:not(.expanded) > .sidebar- {
-    &top {
+  &:not(.expanded) > .navbar {
+    &--top {
       border: none;
       background: none;
       box-shadow: none;
     }
-    &bot {
+    &--bot {
       overflow: hidden;
     }
   }
-  .sidebar {
+  .navbar {
     grid-template-columns: auto 60px;
     display: grid;
 
@@ -83,7 +86,7 @@
         }
       }
     }
-    &-top {
+    &--top {
       display: grid;
       grid-template-columns: auto 60px;
       align-items: center;
@@ -96,7 +99,7 @@
         text-shadow: $shadow-primary;
       }
     }
-    &-bot {
+    &--bot {
       overflow-y: auto;
       overflow-x: hidden;
       .routes-section {

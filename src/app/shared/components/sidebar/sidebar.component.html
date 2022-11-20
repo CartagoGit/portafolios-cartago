@@ -1,4 +1,4 @@
-<section class="sidebar sidebar-top">
+<section class="navbar navbar--top">
   <div>
     <h2>{{ storageSvc.titleSidebar }}</h2>
   </div>
@@ -15,16 +15,17 @@
     </button>
   </div>
 </section>
-<section class="sidebar sidebar-bot">
+<section class="navbar navbar--bot">
   <div class="routes-section">
-    <div><app-list-badged></app-list-badged></div>
+    <div>
+      <!-- <app-list-badged></app-list-badged> -->
+    </div>
   </div>
   <div class="icons-section">
     <div class="list-icons">
-      <div *ngFor="let numProject of list; let i = index" class="area-icon">
+      <section *ngFor="let numProject of list; let i = index" class="area-icon">
         <span class="icon">{{ i + 1 }}</span>
-        <!-- [ngClass]="isExpanded ? 'expanded-icon' : ''" -->
-      </div>
+      </section>
     </div>
   </div>
 </section>

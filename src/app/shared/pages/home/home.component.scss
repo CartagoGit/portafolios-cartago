@@ -75,7 +75,12 @@
       }
       .certificates {
         background: $linear-opacity-background,
-          url("../../../../assets/images/pics//certificate.jpg") no-repeat;
+          url("/assets/images/pics/certificate.jpg") no-repeat;
+        background-size: cover;
+      }
+      .curriculum {
+        background: $linear-opacity-background,
+          url("/assets/images/pics/curriculum.jpg") no-repeat;
         background-size: cover;
       }
     }

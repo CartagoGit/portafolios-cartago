@@ -13,14 +13,28 @@
     grid-column: 2 / span 3;
     grid-row: 2;
     border-radius: 20px 0 0 0;
-    padding: 30px;
-    padding-top: 50px;
+    // padding-left: 4px;
+    // padding: 30px;
+    // padding-top: 50px;
     color: $darkgrey;
-    scrollbar-gutter: stable;
-
+    scrollbar-gutter: stable both-edges;
     &:last-child {
+      // margin-top: 50px;
+      // padding-top: 50px;
       overflow-y: auto;
       overflow-x: hidden;
+      &> * > * {
+        padding-top: 50px;
+      }
     }
+  }
+  .topbar {
+    grid-column: 2 / span 3;
+    grid-row: 1;
+  }
+  .sidebar {
+    grid-column: span 2 /3;
+    grid-row: 1 / span 2;
+    height: 100%;
   }
 }

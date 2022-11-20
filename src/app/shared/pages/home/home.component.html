@@ -27,7 +27,7 @@
   <div class="projects-home card">
     <h4>Página para recopilar los proyecto desarrollados durante el curso</h4>
     <h2>Lista de proyectos del curso:</h2>
-    <app-list-badged class="card"></app-list-badged>
+    <!-- <app-list-badged class="card"></app-list-badged> -->
   </div>
 
   <!--? ENLACES A PUNTOS DE INTERES SOBRE MÍ -->
@@ -37,22 +37,26 @@
       certificados:
     </h2>
     <div class="links">
-      <!-- TODO mostrar mensaje de que el email se ha copiado al portapapeles -->
-      <a class="card card-hover email" (click)="copyToClipboard(links.email)"
-        >Email</a
-      >
-
-      <a class="card card-hover github" [href]="links.github" target="_blank"
-        >Github</a
-      >
-
       <a
         class="card card-hover portafolios"
         [href]="links.portafolios"
         target="_blank"
         >Portafolios</a
+      ><a
+        class="card card-hover certificates"
+        [href]="links.certificatesGithub"
+        target="_blank"
+        >Certificados</a
       >
-
+      <a
+        class="card card-hover curriculum"
+        [href]="links.curriculum"
+        target="_blank"
+        >Curriculum</a
+      >
+      <a class="card card-hover github" [href]="links.github" target="_blank"
+        >Github</a
+      >
       <a
         class="card card-hover linkedin"
         [href]="links.linkedin"
@@ -60,11 +64,9 @@
         >LinkedIn
       </a>
 
-      <a
-        class="card card-hover certificates"
-        [href]="links.certificatesGithub"
-        target="_blank"
-        >Certificados</a
+      <!-- TODO mostrar mensaje de que el email se ha copiado al portapapeles -->
+      <a class="card card-hover email" (click)="copyToClipboard(links.email)"
+        >Email</a
       >
     </div>
   </div>

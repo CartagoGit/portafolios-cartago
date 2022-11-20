@@ -1,9 +1,6 @@
 @use "/src/assets/styles/vars" as *;
 
 :host {
-  grid-column: 2 / span 3;
-  grid-row: 1;
-  z-index: 2;
   .nav-container {
     align-items: center;
     display: grid;
@@ -12,8 +9,11 @@
     grid-template-rows: 80px;
     padding: 0 10px;
     font-weight: 600;
+
     h1 {
       all: unset;
+      position: relative;
+      z-index: 3;
       transition: all ease 300ms;
       &:hover {
         color: $blue-primary;
@@ -30,6 +30,8 @@
       margin-top: -210px;
       transition: transform ease 500ms;
       padding: 100px;
+      position: relative;
+      z-index: 3;
       .logo-image {
         margin-top: 130px;
         height: 100%;
