@@ -10,9 +10,7 @@ import {
   TLastNameModels,
 } from '../interfaces/storage/storage.interface';
 import { CrudService } from './crud.service';
-import {
-  getLastNameModel,
-} from '../helpers/modify-strings.helper';
+import { getLastNameModel } from '../helpers/modify-strings.helper';
 
 @Injectable({
   providedIn: 'root',
@@ -42,15 +40,59 @@ export class StorageService {
   /**
    * ? Información de rutas externas a la aplicación
    */
-  public links: Readonly<IExternalLinks> = {
-    email: 'cv2mario@gmail.com',
-    github: 'https://github.com/CartagoGit',
-    portafolios: '#',
-    linkedin: 'https://www.linkedin.com/in/mario-cabrero-volarich',
-    certificatesGithub: 'https://github.com/CartagoGit/Certificados',
+  // public links: Readonly<IExternalLinks> = [
+  public links: Readonly<IExternalLinks[]> = [
+    {
+      text: 'GitHub',
+      field: 'github',
+      link: 'https://github.com/CartagoGit',
+      image: '/assets/images/pics/github.jpg',
+      type: 'external',
+      iconClass: 'fa-brands fa-github',
+    },
+    {
+      text: 'Portafolios',
+      field: 'portafolios',
+      link: '/',
+      image: '/assets/images/pics/portafolios.jpg',
+      type: 'internal',
+      iconClass: 'fa-solid fa-folder-tree',
+    },
+    {
+      text: 'LinkedIn',
+      field: 'linkedin',
+      link: 'https://www.linkedin.com/in/mario-cabrero-volarich',
+      image: '/assets/images/pics/linkedin.jpg',
+      type: 'external',
+      iconClass: 'fa-brands fa-linkedin',
+    },
+    //TODO - Crear la pagina donde mostrar los certificados hospedados en github
+    {
+      text: 'Certificados',
+      field: 'certificates',
+      link: 'https://github.com/CartagoGit/Certificados',
+      image: '/assets/images/pics/certificate.jpg',
+      type: 'internal',
+      iconClass: 'fa-solid fa-graduation-cap',
+    },
     //TODO Añadir enlace o crear pagina con el curriculum
-    curriculum: ''
-  };
+    {
+      text: 'Curriculum',
+      field: 'curriculum',
+      link: '',
+      image: '/assets/images/pics/curriculum.jpg',
+      type: 'internal',
+      iconClass: 'fa-solid fa-building-columns',
+    },
+    {
+      text: 'Email',
+      field: 'email',
+      link: 'cv2mario@gmail.com',
+      image: '/assets/images/pics/email.jpg',
+      type: 'email',
+      iconClass: 'fa-solid fa-envelope',
+    },
+  ];
 
   /**
    * ? Logo en mensaje de bienvenida en ASCII - DEPRECTATED mientras se use la imagen de logotipo
@@ -100,15 +142,15 @@ export class StorageService {
       },
       {
         title: 'Email',
-        data: this.links.email,
+        data: this.links.find((link) => link.field === 'email'),
       },
       {
         title: 'Github',
-        data: this.links.github,
+        data: this.links.find((link) => link.field === 'github'),
       },
       {
         title: 'Linkedin',
-        data: this.links.linkedin,
+        data: this.links.find((link) => link.field === 'linkedin'),
       },
     ],
     logoToShow: this._logoImg,
@@ -127,8 +169,7 @@ export class StorageService {
   /**
    * ? Titulo que aparecerá en el sidebar
    */
-  public titleSidebar : string = 'Portafolios'
-
+  public titleSidebar: string = 'Portafolios';
 
   //!GROUP-SECTION - Información fija
   //#endregion -INFORMACION FIJA

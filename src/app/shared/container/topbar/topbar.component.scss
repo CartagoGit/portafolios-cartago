@@ -17,6 +17,7 @@
       transition: all ease 300ms;
       &:hover {
         color: $blue-primary;
+        cursor: pointer;
       }
     }
     .logo {

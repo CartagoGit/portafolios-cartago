@@ -1,17 +1,19 @@
 :host {
   width: 100%;
+  z-index: 10;
   .footer-container {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    display: flex;
+    position: fixed;
+    bottom: 0px;
   }
   .button-to-up {
-    position: absolute;
+    position: fixed;
     right: 20px;
     bottom: 10px;
-    .icon{
+    .icon {
       transform: rotate(-90deg);
     }
   }

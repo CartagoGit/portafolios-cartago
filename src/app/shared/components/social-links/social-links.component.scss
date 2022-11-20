@@ -1,45 +1,50 @@
 @use "/src/assets/styles/vars" as *;
 
-.links {
-  display: flex;
-  justify-content: space-between;
-  > * {
-    width: 18%;
-    height: 130px;
+:host {
+  & > * {
     display: flex;
-    align-items: flex-start;
+    height: 16px;
+    width: 800px;
     justify-content: center;
-    font-size: 30px;
+    align-items: flex-end;
+    border-bottom: none;
+    box-shadow: $shadow-primary;
+    font-size: 18px;
     color: $light;
+    position: relative;
   }
-  .email {
-    background: $linear-opacity-background,
-      url("../../../../assets/images/pics/email.jpg") no-repeat;
-    background-size: cover;
-  }
-  .github {
-    background: $linear-opacity-background,
-      url("../../../../assets/images/pics/github.jpg") no-repeat;
-    background-size: cover;
-  }
-  .portafolios {
-    background: $linear-opacity-background,
-      url("../../../../assets/images/pics/portafolios.jpg") no-repeat;
-    background-size: cover;
-  }
-  .linkedin {
-    background: $linear-opacity-background,
-      url("../../../../assets/images/pics/linkedin.jpg") no-repeat;
-    background-size: cover;
-  }
-  .certificates {
-    background: $linear-opacity-background,
-      url("/assets/images/pics/certificate.jpg") no-repeat;
-    background-size: cover;
-  }
-  .curriculum {
-    background: $linear-opacity-background,
-      url("/assets/images/pics/curriculum.jpg") no-repeat;
-    background-size: cover;
+
+  .links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: -21px;
+    z-index: 20;
+
+    .link {
+      margin: 3px;
+      justify-content: center;
+      display: flex;
+      align-items: flex-start;
+      text-align: center;
+      min-width: 140px;
+      height: 44px;
+      padding: 5px;
+      border-radius: $border-radius-primary $border-radius-primary 0 0;
+      transition: all 400ms ease;
+      background: $linear-opacity-background-compressed-links;
+
+      flex-wrap: wrap;
+      &:hover {
+        transform: translatey(-20px);
+        // background: $linear-opacity-background;
+        align-items: flex-start;
+      }
+
+      & > *:last-child {
+        margin-top: 4px;
+      }
+    }
   }
 }

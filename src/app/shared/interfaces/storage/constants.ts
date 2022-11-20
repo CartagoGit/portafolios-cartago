@@ -1,10 +1,12 @@
+export type TLink = 'email' | 'external' | 'internal';
+
 export interface IExternalLinks {
-  email: string;
-  github: string;
-  portafolios: string;
-  linkedin: string;
-  certificatesGithub: string;
-  curriculum: string;
+  text: string;
+  field: string;
+  link: string;
+  image: string;
+  type: TLink;
+  iconClass: string;
 }
 
 export interface IWebOwner {
