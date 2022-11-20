@@ -11,7 +11,6 @@ import {
 } from '../interfaces/storage/storage.interface';
 import { CrudService } from './crud.service';
 import {
-  getSingular,
   getLastNameModel,
 } from '../helpers/modify-strings.helper';
 
@@ -130,11 +129,12 @@ export class StorageService {
    */
   public titleSidebar : string = 'Portafolios'
 
+
   //!GROUP-SECTION - Información fija
   //#endregion -INFORMACION FIJA
 
   //GROUP-SECTION - Modelo de datos
-  // #region
+  //#region
 
   //SECTION - PROYECTOS
   // #region

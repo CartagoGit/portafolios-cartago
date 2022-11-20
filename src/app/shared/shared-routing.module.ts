@@ -8,14 +8,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
-      }
-    ]
-  }
+        component: HomeComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SharedRoutingModule { }
+export class SharedRoutingModule {}

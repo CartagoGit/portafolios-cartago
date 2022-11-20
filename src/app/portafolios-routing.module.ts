@@ -9,12 +9,14 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo : ''
-  }
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
   exports: [RouterModule],
 })
 export class PortafoliosRoutingModule {}

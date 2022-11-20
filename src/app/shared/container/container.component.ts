@@ -8,7 +8,11 @@ import { StorageService } from '../services/storage.service';
   styleUrls: ['./container.component.scss'],
 })
 export class ContainerComponent {
-  public title: string = 'Portafolios de Mario Cabrero Volarich - CartagoNova';
+  public title: string =
+    'Portafolios de ' +
+    this._storageSvc.webOwner.completeName +
+    ' - ' +
+    this._storageSvc.webOwner.completeNick;
 
   //ANCHOR - CONSTRUCTOR
   constructor(private _storageSvc: StorageService) {}
