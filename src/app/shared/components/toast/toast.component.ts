@@ -49,10 +49,12 @@ export class ToastComponent implements OnInit {
    * ? Comenzar el contador del toast
    */
   public countDown(): void {
+    clearInterval(this._progressInterval);
     this.progressBar.nativeElement.style.width =
       this.toastSvc.data.progressWidth;
 
     this._progressInterval = setInterval(() => {
+      //REVIEW - Math round con el numero segun el tiempo que deseemos
       const width = parseInt(this.progressBar.nativeElement.style.width, 10);
       console.log(width);
       if (width <= 0) {
@@ -61,7 +63,7 @@ export class ToastComponent implements OnInit {
         return;
       }
 
-      this.toastSvc.data.progressWidth = String(width - 1);
+      this.toastSvc.data.progressWidth = String(width - 0.15);
       this.progressBar.nativeElement.style.width =
         this.toastSvc.data.progressWidth + '%';
     }, 100);
