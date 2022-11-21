@@ -27,8 +27,8 @@ export class ToastService {
    * @param data - Información a pasar al toast
    */
   public show(data: IToastData) {
-    if (data.type) {
-      this._data.type = TToasts.error;
+    if (!data.type) {
+      this._data.type = 'error';
     }
     this._data = { ...data, show: true, progressWidth: '100%' };
     this.open.next(this._data);

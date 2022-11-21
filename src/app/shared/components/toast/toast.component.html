@@ -4,22 +4,22 @@
   class="toast-wrapper"
   [@openClose]="toastSvc.data && toastSvc.data.show ? 'open' : 'closed'"
 >
-  <div class="inner-wrapper">
-    <div class="flex" *ngIf="toastSvc.data">
-      <div class="toast-content">
-        <h5 class="toast-title">
-          {{ toastSvc.data.title }}
-        </h5>
-        <div class="toast-text">
-          {{ toastSvc.data.content }}
-        </div>
+  <div class="inner-wrapper" *ngIf="toastSvc.data">
+    <div class="toast-header">
+      <h5 class="toast-title">
+        {{ toastSvc.data.title }}
+      </h5>
+    </div>
+    <div class="toast-body">
+      <div class="toast-text">
+        {{ toastSvc.data.content }}
       </div>
     </div>
   </div>
 
   <div
     class="progress-bar"
-    [ngClass]="{ success: toastSvc.data && toastSvc.data.type === 1 }"
+    [ngClass]="{ success: toastSvc.data && toastSvc.data.type === 'success' }"
     #progressBar
   ></div>
 </div>

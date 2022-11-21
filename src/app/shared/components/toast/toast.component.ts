@@ -36,9 +36,7 @@ export class ToastComponent implements OnInit {
 
   //ANCHOR - Constructor
   constructor(public toastSvc: ToastService) {
-    console.log(123123124);
     this.toastSvc.open.subscribe((data) => {
-      console.log(12321);
       if (data.show) {
         this.countDown();
       }
@@ -51,7 +49,8 @@ export class ToastComponent implements OnInit {
    * ? Comenzar el contador del toast
    */
   public countDown(): void {
-    this.progressBar.nativeElement.style.width = this.toastSvc.data.progressWidth;
+    this.progressBar.nativeElement.style.width =
+      this.toastSvc.data.progressWidth;
 
     this._progressInterval = setInterval(() => {
       const width = parseInt(this.progressBar.nativeElement.style.width, 10);
@@ -65,7 +64,7 @@ export class ToastComponent implements OnInit {
       this.toastSvc.data.progressWidth = String(width - 1);
       this.progressBar.nativeElement.style.width =
         this.toastSvc.data.progressWidth + '%';
-    }, 150);
+    }, 100);
   }
 
   /**

@@ -42,8 +42,9 @@ export class SocialLinksComponent implements OnInit {
   private _copyToClipboard(text: string) {
     navigator.clipboard.writeText(text);
     this._toastSvc.show({
-      title: 'Email',
-      content: 'Un contenido',
+      title: 'El email se ha copiado al portapapeles',
+      content: text,
+      type: 'success'
     });
   }
 }

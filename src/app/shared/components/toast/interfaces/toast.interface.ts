@@ -1,6 +1,4 @@
-export enum TToasts {
-  error, success, warning, info
-}
+export type TToasts = 'error' | 'success' | 'warning' | 'info';
 
 export interface IToastData {
   title: string;
