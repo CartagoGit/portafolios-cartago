@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { PortafoliosRoutingModule } from './portafolios-routing.module';
@@ -11,6 +12,7 @@ import { ContainerComponent } from './shared/container/container.component';
   declarations: [],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     PortafoliosRoutingModule,
     SharedModule,

@@ -4,14 +4,14 @@
   <ng-container *ngSwitchCase="'bottom'">
     <nav class="links">
       <div
-        *ngFor="let link of links"
+        *ngFor="let linkData of links"
         class="card card-hover link pointer"
-        [class]="link.field"
-        (click)="clickLink(link.type)"
+        [class]="linkData.field"
+        (click)="clickLink(linkData.type, linkData.link)"
       >
-        {{ link.text }}
+        {{ linkData.text }}
         <div class="flex-break-line"></div>
-        <i [class]="link.iconClass"></i>
+        <i [class]="linkData.iconClass"></i>
       </div>
     </nav>
   </ng-container>
